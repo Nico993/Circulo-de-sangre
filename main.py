@@ -2,7 +2,7 @@ import os
 import string #Utilizado para generar el abecedario
 import re     #Utilizado para verificar formatos correctos
 from datetime import * #Utilizado para obtener el dia actual
-from classes import *   #Importar todas las clases que estan dentro de classes
+from Socio import * 
 
 
 os.system("color")
@@ -10,22 +10,15 @@ os.system("color")
 ABC = list(string.ascii_uppercase)
 ABC.append("Ñ")
 ABC.append(" ")
-Options = ["A","B","C", "S"]
+Options = ["A","B", "S"]
 Socios = []
 today = date.today()
 
-#Inicializar los tipos de sangre
-TypeA = Sangre("A")
-TypeB = Sangre("B")
-TypeAB = Sangre("AB")
-TypeO = Sangre("O")
 
-#Inicializar los tipos de categoria
-Active = Categoria("Activo",13250.45)
-Pasive = Categoria("Pasivo",78740.25)
+
 
 #Inicializar socios
-socio1 = Socio("Nicolas","Cabrera",43675293,"2001/11/25","belgrano 993","San Fco",15583576,"nicolascab993@gmial.com","S","S",TypeO,Pasive)
+socio1 = Socio("Nicolas","Cabrera",43675293,"2001/11/25","belgrano 993","San Fco",15583576,"nicolascab993@gmial.com","s","s", "Paracetamol","o","none")
 Socios.append(socio1)
 
 def main ():
@@ -48,7 +41,6 @@ def ShowMenu():
         print("***********************")
         print("Registrar Cliente --------------------A")
         print("Mostrar socios -----------------------B")
-        print("Actualizar Categoria  ----------------C")
         print("Salir --------------------------------S")
         print("***********************")
         #mas print
@@ -73,9 +65,6 @@ def EstablishFunction(Choice):
     elif num == 1:
         os.system("CLS")
         ShowClients()
-    elif num == 2:
-        os.system("CLS")
-        print("Opcion c")
     #sigue....
 
 def AddClient():
@@ -153,17 +142,20 @@ def AddClient():
         else:
             print("\033[91mIngrese un email valido\033[0;0m")
     while True:
-        Desease = input("Ingrese enfermedad (S/N): ")
+        Desease = input("Cuenta con alguna enfermedad (S/N): ")
         if Desease.upper() != "S" and Desease.upper() != "N":
             print("\033[91mIngrese una respuesta valida\033[0;0m")
         else:
             break
     
-    while True:    
-        Medication = input ("Ingrese medicación (S/N): ")
+    while True: 
+        MedicationName = "none"   
+        Medication = input ("Toma medicación (S/N): ")
         if Medication.upper() != "S" and Medication.upper() != "N":
             print("\033[91mIngrese un respuesta valida\033[0;0m")
         else: 
+            if Medication.upper() == "S":
+                MedicationName = input("Ingrese el nombre de la medicación: ")
             break
     while True:   
         BloodType = input("Ingrese el tipo de sangre: ")
@@ -178,19 +170,7 @@ def AddClient():
         else: 
             break
     if Terms.upper() == "S":
-
-        Category = DefineCategory(DateOfBirth,Desease,Medication)
-
-        if BloodType.upper() == "A":
-            socio = Socio(Name,LastName,Dni,DateOfBirth,Address,Locality,PhoneNumber,Email,Desease,Medication,TypeA,Category)
-        elif BloodType.upper() == "B":
-            socio = Socio(Name,LastName,Dni,DateOfBirth,Address,Locality,PhoneNumber,Email,Desease,Medication,TypeB,Category)
-        elif BloodType.upper() == "AB":
-            socio = Socio(Name,LastName,Dni,DateOfBirth,Address,Locality,PhoneNumber,Email,Desease,Medication,TypeAB,Category)
-        elif BloodType.upper() == "O":
-            socio = Socio(Name,LastName,Dni,DateOfBirth,Address,Locality,PhoneNumber,Email,Desease,Medication,TypeO,Category)
-        
-        #Crear el objeto socio dependiendo del tipo de sangre ingresado
+        socio = Socio(Name,LastName,Dni,DateOfBirth,Address,Locality,PhoneNumber,Email,Desease,Medication,MedicationName,BloodType,"none") #Crear el objeto socio dependiendo del tipo de sangre ingresado
 
         Socios.append(socio)            #guardar el objeto dentro de una lista para mantenerlo
     
@@ -203,23 +183,6 @@ def VerifyString(Input):
             band = True
             break
     return band
-
-def DefineCategory(DateOfBirth,Desease,Medication):
-    Age = CalculateAge(DateOfBirth)
-    if (Age >= 18 and Age <= 56):
-        if (Desease.upper() == "S" and Medication.upper() == "S"):
-            return Pasive
-        else:
-            return Active
-    else:
-        return Pasive
-
-
-def CalculateAge(DateOfBirth):
-    SplitDate = DateOfBirth.split("/") 
-    birth = datetime(int(SplitDate[0]),int(SplitDate[1]),int(SplitDate[2]))
-    age = today.year - birth.year - ((today.month, today.day) < (birth.month, birth.day))
-    return age
 
 
 def ShowClients():
