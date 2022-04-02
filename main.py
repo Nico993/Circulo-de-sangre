@@ -1,12 +1,16 @@
+import os
 import string #Utilizado para generar el abecedario
 import re     #Utilizado para verificar formatos correctos
-from datetime import *  #Utilizado para obtener el dia actual
+from datetime import * #Utilizado para obtener el dia actual
 from classes import *   #Importar todas las clases que estan dentro de classes
 
+
+os.system("color")
 #Variables globales
 ABC = list(string.ascii_uppercase)
 ABC.append("Ñ")
-Options = ["A","B", "S"]
+ABC.append(" ")
+Options = ["A","B","C", "S"]
 Socios = []
 today = date.today()
 
@@ -21,7 +25,7 @@ Active = Categoria("Activo",13250.45)
 Pasive = Categoria("Pasivo",78740.25)
 
 #Inicializar socios
-socio1 = Socio("Nicolas","Cabrera",43675293,"2001/11/25","belgrano 993","San Fco",15583576,"nicolascab993@gmial.com","S","S","O",Pasive)
+socio1 = Socio("Nicolas","Cabrera",43675293,"2001/11/25","belgrano 993","San Fco",15583576,"nicolascab993@gmial.com","S","S",TypeO,Pasive)
 Socios.append(socio1)
 
 def main ():
@@ -38,11 +42,14 @@ def ShowMenu():
     Cond1 = False
     while Cond:
         if Cond1:
-            print("Por favor Seleccione una opción correcta") #Cambiar color
+            os.system("CLS")
+            print("\033[91m\nPor favor Seleccione una opción correcta\033[0;0m") #Cambiar color
+        print("\033[2;30;47m\t\tCirculo de sangre\n\033[0;0m")
         print("***********************")
-        print("Registrar Cliente -------------------A")
-        print("Actualizar Categoria  ----------------B")
-        print("Salir -----------------------------S")
+        print("Registrar Cliente --------------------A")
+        print("Mostrar socios -----------------------B")
+        print("Actualizar Categoria  ----------------C")
+        print("Salir --------------------------------S")
         print("***********************")
         #mas print
         #
@@ -60,43 +67,45 @@ def EstablishFunction(Choice):
     num = Options.index((Choice.upper()))
     
     if num == 0:
+        os.system("CLS")
         AddClient()
+        os.system("CLS")
     elif num == 1:
-        print("Opcion b")
+        os.system("CLS")
+        ShowClients()
+    elif num == 2:
+        os.system("CLS")
+        print("Opcion c")
     #sigue....
 
 def AddClient():
     while True:
-        band = False
         Name  = input("Ingrese nombre: ")
-        for i in Name:
-            if i.upper() not in ABC:    #Verificar si cada letra del nombre corresponde a alguna del abecedario
-                print("Ingrese un nombre valido")
-                band = True
-                break
+        band = VerifyString(Name)
         if band == False:
             break
+        else:
+            print("\033[91mIngrese un nombre valido\033[0;0m")
     
     while True:
-        band = False
         LastName  = input("Ingrese apellido: ")
-        for i in LastName:
-            if i.upper() not in ABC:    #Verificar si cada letra del nombre corresponde a alguna del abecedario
-                print("Ingrese un apellido valido")
-                band = True
-                break
+        band = VerifyString(LastName)
         if band == False:
             break
+        else: 
+            print("\033[91mIngrese un apellido valido\033[0;0m")
 
     while True:
         try:
             Dni = int(input("Ingrese DNI: "))
         except ValueError:                              #Si la entreda no es int salta este error
-            print("El Dni debe ser un numero")
+            print("\033[91mEl Dni debe ser un numero\033[0;0m")
             continue
         if Dni < 0:
-            print("El DNI no puede ser negativo")
+            print("\033[91mEl DNI no puede ser negativo\033[0;0m")
             continue
+        elif len(str(Dni)) < 7 or len(str(Dni)) > 9:
+            print("\033[91mIngrese un Dni valido\033[0;0m")
         else:
             break
     
@@ -105,84 +114,95 @@ def AddClient():
         if (re.match("^[0-9]{4}/[0-9]{2}/[0-9]{2}$",DateOfBirth)):    #Verificar que sea el formato adecuado
             SplitDate = DateOfBirth.split("/")
             if (today.year < int(SplitDate[0])):                  #verificar que sea una fecha pasada
-                print("Ingrese un formato valido de fecha")
+                print("\033[91mIngrese un formato valido de fecha\033[0;0m")
                 continue
             elif (today.month < int(SplitDate[1]) and today.year <= int(SplitDate[0])):
-                print("Ingrese un formato valido de fecha")
+                print("\033[91mIngrese un formato valido de fecha\033[0;0m")
             elif (today.day < int(SplitDate[2]) and today.month <= int(SplitDate[1]) and today.year <= int(SplitDate[0])):
-                print("Ingrese un formato valido de fecha")
+                print("\033[91mIngrese un formato valido de fecha\033[0;0m")
             elif (int(SplitDate[0]) <= 1900 or int(SplitDate[1]) < 1 or int(SplitDate[1]) > 12 or int(SplitDate[2]) < 1 or int(SplitDate[2]) > 31):
-                print("Ingrese una fecha valida")
+                print("\033[91mIngrese una fecha valida\033[0;0m")
             else:
                 break
         else:
-            print("Ingrese un formato valido de fecha")
+            print("\033[91mIngrese un formato valido de fecha\033[0;0m")
     Address = input("Ingrese dirección (nombre-numero): ")
     while True:
-        band = False
         Locality  = input("Ingrese localidad: ")
-        for i in Locality:
-            if i.upper() not in ABC:    #Verificar si cada letra del nombre corresponde a alguna del abecedario
-                print("Ingrese una localidad valida")
-                band = True
-                break
+        band = VerifyString(Locality)
         if band == False:
             break
+        else:
+            print("\033[91mIngrese una localidad valida\033[0;0m")
     while True:
         try:
             PhoneNumber = int(input("Ingrese numero de telefono: "))
         except ValueError:                              #Si la entreda no es int salta este error
-            print("El telefono debe ser un numero")
+            print("\033[91mEl telefono debe ser un numero\033[0;0m")
             continue
         if PhoneNumber < 0:
-            print("El telefono no puede ser negativo")
+            print("\033[91mEl telefono no puede ser negativo\033[0;0m")
             continue
         else:
             break
     
     while True:    
-        Email = input("Ingrese Email: ")
+        Email = input("Ingrese Email (ejemplo@dominio.com): ")
         if (re.match("^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$",Email)):
             break
         else:
-            print("Ingrese un email valido")
+            print("\033[91mIngrese un email valido\033[0;0m")
     while True:
         Desease = input("Ingrese enfermedad (S/N): ")
         if Desease.upper() != "S" and Desease.upper() != "N":
-            print("Ingrese una respuesta valida")
+            print("\033[91mIngrese una respuesta valida\033[0;0m")
         else:
             break
     
     while True:    
         Medication = input ("Ingrese medicación (S/N): ")
         if Medication.upper() != "S" and Medication.upper() != "N":
-            print("Ingrese un respuesta valida")
+            print("\033[91mIngrese un respuesta valida\033[0;0m")
         else: 
             break
     while True:   
-        BloodType = input("Ingrese el tipo de sangre")
+        BloodType = input("Ingrese el tipo de sangre: ")
         if BloodType.upper() not in["A","B","O","AB"]:
-            print("Ingrese un tipo de sangre valido")
+            print("\033[91mIngrese un tipo de sangre valido\033[0;0m")
         else:
             break
-    
-    Category = DefineCategory(DateOfBirth,Desease,Medication)
+    while True:    
+        Terms = input ("¿El cliente acepta los terminos? (S/N): ")
+        if Terms.upper() != "S" and Terms.upper() != "N":
+            print("\033[91mIngrese un respuesta valida\033[0;0m")
+        else: 
+            break
+    if Terms.upper() == "S":
 
-    if BloodType.upper() == "A":
-        socio = Socio(Name,LastName,Dni,DateOfBirth,Address,Locality,PhoneNumber,Email,Desease,Medication,TypeA,Category)
-    elif BloodType.upper() == "B":
-        socio = Socio(Name,LastName,Dni,DateOfBirth,Address,Locality,PhoneNumber,Email,Desease,Medication,TypeB,Category)
-    elif BloodType.upper() == "AB":
-        socio = Socio(Name,LastName,Dni,DateOfBirth,Address,Locality,PhoneNumber,Email,Desease,Medication,TypeAB,Category)
-    elif BloodType.upper() == "O":
-        socio = Socio(Name,LastName,Dni,DateOfBirth,Address,Locality,PhoneNumber,Email,Desease,Medication,TypeO,Category)
+        Category = DefineCategory(DateOfBirth,Desease,Medication)
+
+        if BloodType.upper() == "A":
+            socio = Socio(Name,LastName,Dni,DateOfBirth,Address,Locality,PhoneNumber,Email,Desease,Medication,TypeA,Category)
+        elif BloodType.upper() == "B":
+            socio = Socio(Name,LastName,Dni,DateOfBirth,Address,Locality,PhoneNumber,Email,Desease,Medication,TypeB,Category)
+        elif BloodType.upper() == "AB":
+            socio = Socio(Name,LastName,Dni,DateOfBirth,Address,Locality,PhoneNumber,Email,Desease,Medication,TypeAB,Category)
+        elif BloodType.upper() == "O":
+            socio = Socio(Name,LastName,Dni,DateOfBirth,Address,Locality,PhoneNumber,Email,Desease,Medication,TypeO,Category)
         
         #Crear el objeto socio dependiendo del tipo de sangre ingresado
 
-    Socios.append(socio)            #guardar el objeto dentro de una lista para mantenerlo
+        Socios.append(socio)            #guardar el objeto dentro de una lista para mantenerlo
     
 
 
+def VerifyString(Input):
+    band = False
+    for i in Input:
+        if i.upper() not in ABC:    #Verificar si cada letra del nombre corresponde a alguna del abecedario
+            band = True
+            break
+    return band
 
 def DefineCategory(DateOfBirth,Desease,Medication):
     Age = CalculateAge(DateOfBirth)
@@ -202,9 +222,12 @@ def CalculateAge(DateOfBirth):
     return age
 
 
-
-
-
+def ShowClients():
+    j = 1
+    for i in Socios:
+        print(f"\033[95m\nSocio N° {j}:\033[0;0m")
+        print(i)
+        j = j + 1
 
 
 main()
