@@ -85,12 +85,18 @@ def AddClient():
             print("\033[91mIngrese un apellido valido\033[0;0m")
 
     while True:
+        band = False
         try:
             Dni = int(input("Ingrese DNI: "))
         except ValueError:                              #Si la entreda no es int salta este error
             print("\033[91mEl Dni debe ser un numero\033[0;0m")
             continue
-        if Dni < 0:
+        for i in Socios:
+            if i.Dni == Dni:
+                band = True
+        if band:
+            print("\033[91mEl DNI ya existe dentro de la base de datos\033[0;0m")
+        elif Dni < 0:
             print("\033[91mEl DNI no puede ser negativo\033[0;0m")
             continue
         elif len(str(Dni)) < 7 or len(str(Dni)) > 9:
