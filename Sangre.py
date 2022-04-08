@@ -1,10 +1,10 @@
 class Sangre:
-    def __init__(self, Type):
-        self.Type = Type
+    def __init__(self, Tipo):
+        self.Tipo = Tipo
 
 
 #Inicializar los tipos de sangre
-TypeA = Sangre("A")
-TypeB = Sangre("B")
-TypeAB = Sangre("AB")
-TypeO = Sangre("O")
+TipoA = Sangre("A")
+TipoB = Sangre("B")
+TipoAB = Sangre("AB")
+TipoO = Sangre("O")

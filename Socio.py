@@ -4,41 +4,41 @@ from Sangre import *
 today = date.today()
 
 class Socio:
-    def __init__(self,Name, LastName, Dni, DateOfBirth, Address, Locality, PhoneNumber, Email, Disease, Medication, MedicationName, BloodType, Category):
-        self.Name = Name
-        self.LastName = LastName
+    def __init__(self,Nombre, Apellido, Dni, FechaNacimiento, Domicilio, Localidad, Telefono, Email, Enfermedad, Medicamentos, NombreMedicamentos, TipoSangre, Categoria):
+        self.Nombre = Nombre
+        self.Apellido = Apellido
         self.Dni = Dni
-        self.DateOfBirth = DateOfBirth
-        self.Address = Address
-        self.Locality = Locality
-        self.PhoneNumber = PhoneNumber
+        self.FechaNacimiento = FechaNacimiento
+        self.Domicilio = Domicilio
+        self.Localidad = Localidad
+        self.Telefono = Telefono
         self.Email = Email
-        self.Desease = Disease
-        self.Medication = Medication
-        self.MedicationName = MedicationName
-        self.BloodType = BloodType
-        self.Category = Category
+        self.Enfermedad = Enfermedad
+        self.Medicamentos = Medicamentos
+        self.NombreMedicamentos = NombreMedicamentos
+        self.TipoSangre = TipoSangre
+        self.Categoria = Categoria
         self.DefineCategory()
         self.DefineBloodType()
 
     
     def __str__(self):
-        return f"\nNombre: {self.Name}\nApellido: {self.LastName}\nDni: {self.Dni}\nFecha de nacimiento: {self.DateOfBirth}\nEdad: {self.DefineCategory()}\nDirección: {self.Address}\nLocalidad: {self.Locality}\nNumero de telefono: {self.PhoneNumber}\nEmail: {self.Email}\nEnfermedad: {self.Desease}\nMedicacion: {self.Medication}\nNombre de medicacion: {self.MedicationName}\nTipo de sangre: {self.BloodType.Type}\nCategoria: {self.Category.Name}"
+        return f"\nNombre: {self.Nombre}\nApellido: {self.Apellido}\nDni: {self.Dni}\nFecha de nacimiento: {self.FechaNacimiento}\nEdad: {self.DefineCategory()}\nDomicilio: {self.Domicilio}\nLocalidad: {self.Localidad}\nNumero de telefono: {self.Telefono}\nEmail: {self.Email}\nEnfermedad: {self.Enfermedad}\nMedicacion: {self.Medicamentos}\nNombre de medicacion: {self.NombreMedicamentos}\nTipo de sangre: {self.TipoSangre.Tipo}\nCategoria: {self.Categoria.Nombre}"
     
     
     def DefineCategory(self):
         Age = self.Age()
         if (Age >= 18 and Age <= 56):
-            if (self.Desease.upper() == "S" and self.Medication.upper() == "S"):
-                self.Category = Pasive
+            if (self.Enfermedad.upper() == "S" and self.Medicamentos.upper() == "S"):
+                self.Categoria = Pasivo
             else:
-                self.Category = Active
+                self.Categoria = Activo
         else:
-            self.Category = Pasive
+            self.Categoria = Pasivo
         return Age
 
     def Age(self):
-        SplitDate = self.DateOfBirth.split("/") 
+        SplitDate = self.FechaNacimiento.split("/") 
         birth = datetime(int(SplitDate[0]),int(SplitDate[1]),int(SplitDate[2]))
         age = today.year - birth.year - ((today.month, today.day) < (birth.month, birth.day))
         return age
@@ -46,14 +46,14 @@ class Socio:
     
     
     def DefineBloodType(self):
-        if self.BloodType.upper() == "A":
-            self.BloodType = TypeA
-        elif self.BloodType.upper() == "B":
-            self.BloodType = TypeB
-        elif self.BloodType.upper() == "AB":
-            self.BloodType = TypeAB
-        elif self.BloodType.upper() == "O":
-            self.BloodType = TypeO
+        if self.TipoSangre.upper() == "A":
+            self.TipoSangre = TipoA
+        elif self.TipoSangre.upper() == "B":
+            self.TipoSangre = TipoB
+        elif self.TipoSangre.upper() == "AB":
+            self.TipoSangre = TipoAB
+        elif self.TipoSangre.upper() == "O":
+            self.TipoSangre = TipoO
             
 
 

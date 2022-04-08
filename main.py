@@ -39,8 +39,8 @@ def ShowMenu():
             print("\033[91m\nPor favor Seleccione una opción correcta\033[0;0m") #Cambiar color
         print("\033[2;30;47m\t\tCirculo de sangre\n\033[0;0m")
         print("***********************")
-        print("Registrar Cliente --------------------A")
-        print("Mostrar socios -----------------------B")
+        print("Registrar Socio ----------------------A")
+        print("Mostrar Socios -----------------------B")
         print("Salir --------------------------------S")
         print("***********************")
         #mas print
@@ -60,25 +60,25 @@ def EstablishFunction(Choice):
     
     if num == 0:
         os.system("CLS")
-        AddClient()
+        AddSocio()
         os.system("CLS")
     elif num == 1:
         os.system("CLS")
-        ShowClients()
+        ShowSocios()
     #sigue....
 
-def AddClient():
+def AddSocio():
     while True:
-        Name  = input("Ingrese nombre: ")
-        band = VerifyString(Name)
+        Nombre  = input("Ingrese nombre: ")
+        band = VerifyString(Nombre)
         if band == False:
             break
         else:
             print("\033[91mIngrese un nombre valido\033[0;0m")
     
     while True:
-        LastName  = input("Ingrese apellido: ")
-        band = VerifyString(LastName)
+        Apellido  = input("Ingrese apellido: ")
+        band = VerifyString(Apellido)
         if band == False:
             break
         else: 
@@ -105,9 +105,9 @@ def AddClient():
             break
     
     while True:
-        DateOfBirth = input("Ingrese fecha de nacimiento (YYYY/MM/DD): ")
-        if (re.match("^[0-9]{4}/[0-9]{2}/[0-9]{2}$",DateOfBirth)):    #Verificar que sea el formato adecuado
-            SplitDate = DateOfBirth.split("/")
+        FechaNacimiento = input("Ingrese fecha de nacimiento (YYYY/MM/DD): ")
+        if (re.match("^[0-9]{4}/[0-9]{2}/[0-9]{2}$",FechaNacimiento)):    #Verificar que sea el formato adecuado
+            SplitDate = FechaNacimiento.split("/")
             if (today.year < int(SplitDate[0])):                  #verificar que sea una fecha pasada
                 print("\033[91mIngrese un formato valido de fecha\033[0;0m")
                 continue
@@ -121,21 +121,21 @@ def AddClient():
                 break
         else:
             print("\033[91mIngrese un formato valido de fecha\033[0;0m")
-    Address = input("Ingrese dirección (nombre-numero): ")
+    Domicilio = input("Ingrese domicilio (nombre-numero): ")
     while True:
-        Locality  = input("Ingrese localidad: ")
-        band = VerifyString(Locality)
+        Localidad  = input("Ingrese localidad: ")
+        band = VerifyString(Localidad)
         if band == False:
             break
         else:
             print("\033[91mIngrese una localidad valida\033[0;0m")
     while True:
         try:
-            PhoneNumber = int(input("Ingrese numero de telefono: "))
+            Telefono = int(input("Ingrese numero de telefono: "))
         except ValueError:                              #Si la entreda no es int salta este error
             print("\033[91mEl telefono debe ser un numero\033[0;0m")
             continue
-        if PhoneNumber < 0:
+        if Telefono < 0:
             print("\033[91mEl telefono no puede ser negativo\033[0;0m")
             continue
         else:
@@ -148,24 +148,24 @@ def AddClient():
         else:
             print("\033[91mIngrese un email valido\033[0;0m")
     while True:
-        Desease = input("Cuenta con alguna enfermedad (S/N): ")
-        if Desease.upper() != "S" and Desease.upper() != "N":
+        Enfermedad = input("Cuenta con alguna enfermedad (S/N): ")
+        if Enfermedad.upper() != "S" and Enfermedad.upper() != "N":
             print("\033[91mIngrese una respuesta valida\033[0;0m")
         else:
             break
     
     while True: 
-        MedicationName = "none"   
-        Medication = input ("Toma medicación (S/N): ")
-        if Medication.upper() != "S" and Medication.upper() != "N":
+        NombreMedicamento = "none"   
+        Medicamentos = input ("Toma medicamentos (S/N): ")
+        if Medicamentos.upper() != "S" and Medicamentos.upper() != "N":
             print("\033[91mIngrese un respuesta valida\033[0;0m")
         else: 
-            if Medication.upper() == "S":
-                MedicationName = input("Ingrese el nombre de la medicación: ")
+            if Medicamentos.upper() == "S":
+                NombreMedicamento = input("Ingrese el nombre de la medicación: ")
             break
     while True:   
-        BloodType = input("Ingrese el tipo de sangre: ")
-        if BloodType.upper() not in["A","B","O","AB"]:
+        NombreTipoSangre = input("Ingrese el tipo de sangre: ")
+        if NombreTipoSangre.upper() not in["A","B","O","AB"]:
             print("\033[91mIngrese un tipo de sangre valido\033[0;0m")
         else:
             break
@@ -176,7 +176,7 @@ def AddClient():
         else: 
             break
     if Terms.upper() == "S":
-        socio = Socio(Name,LastName,Dni,DateOfBirth,Address,Locality,PhoneNumber,Email,Desease,Medication,MedicationName,BloodType,"none") #Crear el objeto socio dependiendo del tipo de sangre ingresado
+        socio = Socio(Nombre,Apellido,Dni,FechaNacimiento,Domicilio,Localidad,Telefono,Email,Enfermedad,Medicamentos,NombreMedicamento,NombreTipoSangre,"none") #Crear el objeto socio dependiendo del tipo de sangre ingresado
 
         Socios.append(socio)            #guardar el objeto dentro de una lista para mantenerlo
     
@@ -191,7 +191,7 @@ def VerifyString(Input):
     return band
 
 
-def ShowClients():
+def ShowSocios():
     j = 1
     for i in Socios:
         print(f"\033[95m\nSocio N° {j}:\033[0;0m")
