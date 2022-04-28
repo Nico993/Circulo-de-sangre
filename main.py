@@ -10,7 +10,7 @@ os.system("color")
 ABC = list(string.ascii_uppercase)
 ABC.append("Ñ")
 ABC.append(" ")
-Options = ["A","B", "S"]
+Options = ["A","B","C","S"]
 Socios = []
 today = date.today()
 
@@ -19,7 +19,9 @@ today = date.today()
 
 #Inicializar socios
 socio1 = Socio("Nicolas","Cabrera",43675293,"2001/11/25","belgrano 993","San Fco",15583576,"nicolascab993@gmial.com","s","s", "Paracetamol","o","none")
+socio2 = Socio("Pablo","Rodas",43675897,"2001/10/30","Roca 1856","Brk",15693578,"pablorodas@gmail.com","n","n","none","b","none")
 Socios.append(socio1)
+Socios.append(socio2)
 
 def main ():
     Cond = True
@@ -39,9 +41,10 @@ def ShowMenu():
             print("\033[91m\nPor favor Seleccione una opción correcta\033[0;0m") #Cambiar color
         print("\033[2;30;47m\t\tCirculo de sangre\n\033[0;0m")
         print("***********************")
-        print("Registrar Socio ----------------------A")
-        print("Mostrar Socios -----------------------B")
-        print("Salir --------------------------------S")
+        print("Registrar Socio -----------------------------A")
+        print("Mostrar Socios ------------------------------B")
+        print("Mostrar Socios habilitados a donar ----------C")
+        print("Salir ---------------------------------------S")
         print("***********************")
         #mas print
         #
@@ -65,6 +68,9 @@ def EstablishFunction(Choice):
     elif num == 1:
         os.system("CLS")
         ShowSocios()
+    elif num == 2:
+        os.system("CLS")
+        ShowActiveSocios()
     #sigue....
 
 def AddSocio():
@@ -198,7 +204,14 @@ def ShowSocios():
         print(i)
         j = j + 1
 
-
+def ShowActiveSocios():
+    j = 1
+    for i in Socios:
+        if(i.Categoria.Nombre == "Activo"):
+            print(f"\033[95m\nSocio N° {j}:\033[0;0m")
+            print(i)
+            j = j + 1
+    
 main()
 print("ok")
 
