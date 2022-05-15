@@ -2,7 +2,7 @@ from datetime import *
 from categoria import *
 from Sangre import *
 today = date.today()
-
+Socios = []
 class Socio:
     def __init__(self,Nombre, Apellido, Dni, FechaNacimiento, Domicilio, Localidad, Telefono, Email, Enfermedad, Medicamentos, NombreMedicamentos, TipoSangre, Categoria):
         self.Nombre = Nombre
@@ -18,8 +18,10 @@ class Socio:
         self.NombreMedicamentos = NombreMedicamentos
         self.TipoSangre = TipoSangre
         self.Categoria = Categoria
+        self.ConvertirFecha()
         self.DefineCategory()
         self.DefineBloodType()
+       
 
     
     def __str__(self):
@@ -38,9 +40,7 @@ class Socio:
         return Age
 
     def Age(self):
-        SplitDate = self.FechaNacimiento.split("/") 
-        birth = datetime(int(SplitDate[0]),int(SplitDate[1]),int(SplitDate[2]))
-        age = today.year - birth.year - ((today.month, today.day) < (birth.month, birth.day))
+        age = today.year - self.FechaNacimiento.year - ((today.month, today.day) < (self.FechaNacimiento.month, self.FechaNacimiento.day))
         return age
 
     
@@ -55,6 +55,10 @@ class Socio:
         elif self.TipoSangre.upper() == "O":
             self.TipoSangre = TipoO
             
+    def ConvertirFecha(self):
+        SplitDate = self.FechaNacimiento.split("/") 
+        self.FechaNacimiento = date(int(SplitDate[0]),int(SplitDate[1]),int(SplitDate[2]))
+
 
 
 
