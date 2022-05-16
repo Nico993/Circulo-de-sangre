@@ -298,9 +298,9 @@ def GenerarListaDePrioridad():
 def MostrarListaDePrioridad():
     ListaPrioridad = GenerarListaDePrioridad()
     j = 1
-    print("\033[95m \t\t Dni \t\t\t Socio\033[0;0m")
+    print("\033[95m \t\t Dni \t\t\t Socio \t\t\t Grupo Sanguineo\033[0;0m")
     for i in ListaPrioridad:
-        print(f"{j} \t\t {i[0].Dni} \t\t {i[0].Apellido} {i[0].Nombre}")
+        print(f"{j} \t\t {i[0].Dni} \t\t {i[0].Apellido} {i[0].Nombre} \t\t {i[0].TipoSangre.Tipo}")
         j = j + 1
 
 
