@@ -1,0 +1,12 @@
+body{
+    background-image: url("/Images/bg-footer-2020.jpg");
+}
+
+i{
+    font-size: 1.5rem;
+}
+
+.sideBar{
+    position: absolute;
+    height: 100%;
+}

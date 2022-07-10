@@ -1,0 +1,15 @@
+body{
+    text-align: center;
+    background-color: #DFF6FF;
+    margin:0;
+    font-family: "Gentium Book Plus", serif;
+}
+
+h1{
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+}
+
+.hide{
+    display: none;
+}

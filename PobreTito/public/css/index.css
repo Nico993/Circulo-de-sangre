@@ -1,0 +1,24 @@
+.title-image{
+    width: 18%;
+}
+.form-floating{
+    width: 50%;
+    margin: 2rem auto 1rem;
+}
+
+.btn{
+    margin: 3rem auto;
+    display: block;
+}
+
+.link{
+    display: inline-block;
+}
+.bottom{
+    position: absolute;
+    bottom: 0;
+}
+
+
+
+
