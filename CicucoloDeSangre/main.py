@@ -288,7 +288,7 @@ def GenerarListaDePrioridad():
         cont = 0
         if(Socio.Categoria.Nombre == "Activo"):
             for donacion in Donaciones:
-                if(donacion.Socio.Dni == Socio.Dni and donacion.FechaDonacion.year == today.year):
+                if(donacion.Socio.Dni == Socio.Dni and donacion.FechaDonacion.year == today.year and donacion.Estado == True):
                     cont = cont + 1
             if(cont < 2):
                 ListaPrioridad.append((Socio,cont))
