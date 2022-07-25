@@ -2,19 +2,11 @@ Sistema para registrar y gestionar reclamos de los ciudadanos de la ciudad de Sa
 
 #####Ejecutar en local:
 
-#Requsistos previos:
-    Instalar nodejs
-    Instalar mongodb
+#Requsistos previos: Instalar nodejs - Instalar mongodb
 
-#Ejecutar client:
-    cd Client/pobre-tito
-    npm install
-    npm start
+#Ejecutar client: cd Client/pobre-tito - npm install - npm start
 
-#Ejecutar server:
-    cd Server
-    npm install
-    node server.js
+#Ejecutar server: cd Server - npm install - node server.js
 
 
-#####Demo online:
+#####Demo online: https://pobretito.netlify.app/
