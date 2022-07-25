@@ -1,0 +1,99 @@
+body{
+    text-align: center;
+    background-color: #DFF6FF;
+    margin:0;
+    font-family: "Gentium Book Plus", serif;
+}
+
+h1{
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+}
+
+.hide{
+    display: none;
+}
+
+
+/*  SIDEBAR */
+body{
+    background-image: url("/Images/bg-footer-2020.jpg");
+}
+
+i{
+    font-size: 1.5rem;
+}
+
+.sideBar{
+    position: absolute;
+    height: 100%;
+    width: 6%;
+}
+.pointer{
+    cursor: pointer;
+}
+
+
+/* Registro  */
+
+.title-image{
+    width: 18%;
+}
+.input-box{
+    margin: 0 auto;
+    width: 50%;
+}
+
+.input1{
+   margin-top: 2rem;
+}
+.btn{
+    margin: 3rem auto;
+    display: block;
+}
+
+
+/*  LOgin */
+.title-image{
+    width: 18%;
+}
+.form-floating{
+    width: 50%;
+    margin: 2rem auto 1rem;
+}
+
+.btn{
+    margin: 3rem auto;
+    display: block;
+}
+
+.link{
+    display: inline-block;
+}
+.bottom{
+    position: absolute;
+    bottom: 0;
+}
+
+/*  Nuevo reclamo  */
+
+.input{
+    width: 50%;
+    margin: 0 auto;
+}
+.inputs{
+    padding-top: 15%;
+}
+.form-group{
+    margin-top: 5%;
+}
+
+.registrar-button{
+    position: relative;
+    bottom: 4rem;
+}
+
+.title-option{
+    font-weight: bold;
+    font-size: 1.2rem;
+}
