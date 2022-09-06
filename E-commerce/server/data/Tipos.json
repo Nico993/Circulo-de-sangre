@@ -1,0 +1,14 @@
+[
+    {
+        "codigo": 1,
+        "descripcion": "Descuento"
+    },
+    {
+        "codigo": 2,
+        "descripcion": "NXM"
+    },
+    {
+        "codigo": 3,
+        "descripcion": "Codigo"
+    }
+]

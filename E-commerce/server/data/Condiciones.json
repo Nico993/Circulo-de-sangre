@@ -1,0 +1,22 @@
+[
+    {
+        "codigo": 1,
+        "descripcion": "Por la compra de X cantidad de prendas",
+        "codigoTipo": 1
+    },
+    {
+        "codigo": 2,
+        "descripcion": "Por el gasto de X cantidad de pesos",
+        "codigoTipo": 1
+    },
+    {
+        "codigo": 3,
+        "descripcion": "Con mucho stock",
+        "codigoTipo": 2
+    },
+    {
+        "codigo": 4,
+        "descripcion": "Con poco volumen de ventas",
+        "codigoTipo": 2
+    }
+]

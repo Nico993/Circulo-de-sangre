@@ -1,0 +1,27 @@
+[
+    {
+        "codigo": 1,
+        "nombre": "Zapatillas Nike"
+    },
+    {
+        "codigo": 2,
+        "nombre": "Remera Adidas"
+    },
+    {
+        "codigo": 3,
+        "nombre": "Zapatillas Reebook"
+    },
+    {
+        "codigo": 4,
+        "nombre": "Camisa Lacoste"
+    },
+    {
+        "codigo": 5,
+        "nombre": "Remera Reebook"
+    },
+    {
+        "codigo": 6,
+        "nombre": "Pantalon Adidas"
+    }
+
+]
