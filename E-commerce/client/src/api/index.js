@@ -24,11 +24,11 @@ function getPromocionesById(id){
     });
 }
 
-function registrarDescuento(nuevoDescuento){
+function registrarPromocion(nuevaPromocion){
     return new Promise((resolve,reject)=>{
-        fetch(url + "descuento", {
+        fetch(url + "promociones/registrar", {
             method: 'POST',
-            body: JSON.stringify({nuevoDescuento}),
+            body: JSON.stringify({nuevaPromocion}),
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
       },
@@ -41,4 +41,4 @@ function registrarDescuento(nuevoDescuento){
 
 
 
-export {getTipos,getCondiones,getProductos,getPromocionesById,registrarDescuento};
+export {getTipos,getCondiones,getProductos,getPromocionesById,registrarPromocion};

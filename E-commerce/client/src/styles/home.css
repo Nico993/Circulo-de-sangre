@@ -3,6 +3,8 @@
 .header{
     background-color: #CEE5D0;
     height: 100vh;
+    padding-bottom: 3%;
+    padding-left: 0%;
 }
 
 .title{
@@ -11,19 +13,24 @@
     align-items: center;
     text-align: left;
     color: #8C938D;
-    padding-top: 2rem;
+    padding-top: 3rem;
     padding-left: 2rem;
     font-family: 'Josefin Sans', sans-serif;
+    display: inline-block;
+    position: relative;
 }
 
 .title-image{
     display: block;
     margin: auto;
-    margin-top: 10%;
-    width: 50%;
+    margin-top: 12%;
+    width: 55%;
 }
 
 
+.row{
+    --bs-gutter-x: 0rem;
+}
 /*Options*/
 
 .options{
@@ -31,35 +38,86 @@
     height: 100vh;
     padding: 0;
     text-align: center;
+    box-shadow: 3px 0px 10px 1px rgba(0,0,0,1);
+    animation: efecto 7s linear infinite;
+}
+
+@keyframes efecto {
+    50% {box-shadow: 0px -1px 23px 0px hsla(140, 18%, 64%, 0.74);}
+}
+
+.options-btn{
+    margin-top: 18%;
 }
 
 .sub-title{
     font-style: normal;
-    font-size: 24px;
+    font-size: 25px;
     line-height: 23px;
     color: #CEE5D0;
     padding: 3rem;
     font-family: 'Josefin Sans', sans-serif;
+    
 }
 
+.main-btn{
+    padding: 1%;
+    margin: 7% 0;
+    transition: background-color .4s ease-in-out;
+    transition: box-shadow .4s ease-in-out;
+    display: inline-block;
+    position: relative;
+}
+
+.main-btn:after{
+    content: '';
+    position: absolute;
+    width: 10%;
+    transform: scaleX(0);
+    margin-bottom: 2%;
+    margin-left: 45%;
+    height: 1px;
+    left: 0;
+    bottom: 0;
+    background-color: #7a817b;
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+}
+  
+.main-btn:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+  
+/* Global buttons */
 .btn{
     display: block;
     background-color: #CEE5D0;
     margin: 5% 0;
+    transition: background-color, box-shadow .4s ease-in-out;
+    /*transition: box-shadow .4s ease-in-out;*/
     font-family: 'Inter', sans-serif;
 }
+
+
 .btn:hover{
     background-color: #b2ccb5;
     border-color: #8C938D;
+    box-shadow: 3px 3px rgba(128, 128, 128, 0.4);
+    transition: background-color, box-shadow .4s ease-in-out;
+    /*transition: box-shadow .3s ease-in-out;*/
 }
-
 
 .download-section{
     margin-top: 40px;
     text-align: right;
     text-decoration: underline;
     cursor: pointer;
+    transition: color .3s ease-in-out;
 }
+
 .download-section:hover{
-    color: #b2ccb5
+    color: #4a694e;
+    transition: color .2s ease-in-out;
 }
+

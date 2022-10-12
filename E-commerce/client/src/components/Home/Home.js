@@ -7,10 +7,10 @@ import Options from "./Options";
 
 function Home(props){
     return <div className="row">
-            <div className="col-lg-7 col-sm-12 p-0">
+            <div className="col-lg-6 col-sm-12 p-0">
                 <Header />
             </div>
-            <div className="col-lg-5 col-sm-12 p-0">
+            <div className="col-lg-6 col-sm-12 p-0">
                 <Options handleClick = {props.handleClick}/>
             </div>
         </div>
