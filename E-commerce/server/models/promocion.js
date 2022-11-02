@@ -2,10 +2,6 @@ import mongoose from "mongoose";
 
 const promocionSchema = new mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
-    codigo:{
-        type: String,
-        required: [true,"Please chech your data entry, no id especified!"]
-    },
     descripcion:{
         type: String,
         required: [true,"Please chech your data entry, no descripcion especified!"]

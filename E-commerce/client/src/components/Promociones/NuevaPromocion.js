@@ -4,6 +4,7 @@ import Codigo from "./Codigo/Codigo";
 import NxM from "./NXM/NxM";
 
 import "../../styles/nuevaPromocion.css"
+import { faIgloo } from "@fortawesome/free-solid-svg-icons";
 
 function NuevaPromocion(props){
     const [showDescuento, setShowDescuento] = useState(false);
@@ -22,7 +23,7 @@ function NuevaPromocion(props){
         props.handleClose();
     }
 
-    useState(()=>{
+    useEffect(()=>{
         switch(props.codigoPromocion){
             case 1:
                 setShowDescuento(true);
@@ -38,9 +39,9 @@ function NuevaPromocion(props){
 
     return (
         <div>
-        <Descuento show = {showDescuento} handleClose = {handleDescuentoClose} codigoPromocion = {props.codigoPromocion}/>
-        <Codigo show = {showCodigo} handleClose = {handleCodigoClose} codigoPromocion = {props.codigoPromocion} />
-        <NxM show = {showNxM} handleClose = {handleNxMClose} codigoPromocion = {props.codigoPromocion}/>
+        <Descuento show = {showDescuento} handleClose = {handleDescuentoClose} codigoPromocion = {props.codigoPromocion} promocionAEditar = {props.promocionAEditar}/>
+        <Codigo show = {showCodigo} handleClose = {handleCodigoClose} codigoPromocion = {props.codigoPromocion} promocionAEditar = {props.promocionAEditar}/>
+        <NxM show = {showNxM} handleClose = {handleNxMClose} codigoPromocion = {props.codigoPromocion} promocionAEditar = {props.promocionAEditar}/>
         </div>
     ); 
 }

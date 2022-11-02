@@ -34,7 +34,7 @@ function PopUp(props){
         </Modal.Header>
         <Modal.Body>
         <Button text = "Crear una nueva promoción" handleClick = {props.handleClick} codigo = {1}/>
-        <Button text = "Seleccionar una promoción existente" handleClick = {props.handleClick} codigo = {2}/>
+        <Button text = "Editar Promoción existente" handleClick = {props.handleClick} codigo = {2}/>
         <div className = "download-section">
         <a onClick={downloadJson}>Descargar json de las promociones</a>
         </div>

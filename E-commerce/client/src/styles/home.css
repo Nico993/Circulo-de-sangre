@@ -99,6 +99,10 @@
     font-family: 'Inter', sans-serif;
 }
 
+.btn:focus{
+    background-color: #b2ccb5;
+    border-color: #8C938D;
+}
 
 .btn:hover{
     background-color: #b2ccb5;

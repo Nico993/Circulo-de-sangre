@@ -13,4 +13,7 @@ router.get("/promociones/:id", promocionesController.getPromocionesById);
 
 router.post("/promociones/registrar", promocionesController.registrarPromocion);
 
+router.patch("/promociones/:id", promocionesController.updateUnaPromocion);
+
+router.delete("/promociones/eliminar", promocionesController.deletePromocionById);
 export default router;

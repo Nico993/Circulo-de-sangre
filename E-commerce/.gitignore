@@ -131,3 +131,4 @@ dist
 
 # docker
 Dockerfile
+docker-compose.yml

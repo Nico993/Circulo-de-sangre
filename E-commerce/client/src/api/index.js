@@ -38,7 +38,33 @@ function registrarPromocion(nuevaPromocion){
       });
 }
 
+function deletePromocionById(id){
+    return new Promise((resolve,reject)=>{
+        fetch(url + "promociones/eliminar",{
+           method: 'DELETE',
+           body: JSON.stringify({id}),
+           headers:{
+                'Content-type': 'application/json; charset=UTF-8',
+           }, 
+        })
+        .then((response) => response.json())
+        .then((json) => resolve(json));
+    });
+}
+
+function updateUnaPromocion(id, promocion){
+    return new Promise((resolve,reject)=>{
+        fetch(url + "promociones/" + id,{
+            method: 'PATCH',
+            body: JSON.stringify({promocion}),
+            headers:{
+                'Content-type': 'application/json; charset=UTF-8',
+            }
+        })
+        .then((response)=>response.json())
+        .then((json)=>resolve(json));
+    });
+}
 
 
-
-export {getTipos,getCondiones,getProductos,getPromocionesById,registrarPromocion};
+export {getTipos,getCondiones,getProductos,getPromocionesById,registrarPromocion, deletePromocionById, updateUnaPromocion};
